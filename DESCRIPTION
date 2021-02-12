@@ -1,0 +1,22 @@
+Package: onboarding
+Title: Generate template files
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Sangram",
+           family = "Sahu",
+           role = c("aut", "cre"),
+           email = "sangram@lifebit.ai")
+Description: Generate template files for onboading users.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    cli,
+    usethis,
+    utils,
+    dockerfiler,
+    optparse
+Suggests: 
+    testthat
