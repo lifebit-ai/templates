@@ -10,5 +10,5 @@ create_python_script <- function(script_name){
   
   usethis::use_template(template = "script.py", 
                save_as = script_name,
-               package = "onboarding")
+               package = "templates")
 }
