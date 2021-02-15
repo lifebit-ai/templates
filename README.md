@@ -1,12 +1,12 @@
-# onboarding
+# templates
 
-A library for generating template files for making the onboarding more focused and fun, without finding for template files.
+A library for generating template files for making the templates more focused and fun, without finding for template files.
 
 ## Installation
 
 ```R
 if (!require(remotes)) { install.packages("remotes") }
-  remotes::install_github("lifebit-ai/onboarding")
+  remotes::install_github("lifebit-ai/templates")
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ if (!require(remotes)) { install.packages("remotes") }
 Load library
 
 ```R
-library(onboarding)
+library(templates)
 ```
 
 ### Create a Dockefile template
