@@ -15,6 +15,12 @@ jobs:
           export NXF_VER=${{ matrix.nxf_ver }}
           wget -qO- get.nextflow.io | bash
           sudo mv nextflow /usr/local/bin/
+      - name: Echo ${{ github.workspace }}
+        run: |
+          echo ${{ github.workspace }}
+      - name: Echo ${GITHUB_WORKSPACE}
+        run: |
+          echo ${GITHUB_WORKSPACE}/inst/templates/nextflow
       - name: Basic workflow tests
         run: |
           nextflow run ${GITHUB_WORKSPACE}/inst/templates/nextflow -profile test,docker,local
