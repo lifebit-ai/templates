@@ -35,7 +35,7 @@ Channel
     .set { ch_input }
 
 // Define Process
-process step-1 {
+process step_1 {
     tag "$sample_name"
     label 'low_memory'
     publishDir "${params.outdir}", mode: 'copy'
@@ -62,7 +62,7 @@ process report {
     file "multiqc_report.html" into ch_multiqc_report
 
     script:
-    report_dir="${workflow.projectDir}/bin/report""
+    report_dir="${workflow.projectDir}/bin/report"
     """
     cp -r ${report_dir}/ .
     Rscript -e "rmarkdown::render('report.Rmd',params = list(res_table='$concat_table'))"
