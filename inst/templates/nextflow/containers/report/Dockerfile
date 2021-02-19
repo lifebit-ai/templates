@@ -11,20 +11,13 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/*
 
 COPY environment.yml /
-RUN conda env update -n base -f environment.yml && conda clean -a
-ENV PATH /opt/conda/envs/base/bin:$PATH
+RUN conda env update -n ${ENV_NAME} -f environment.yml && conda clean -a
 
-# # Install the conda environment
-# COPY environment.yml /
-# RUN conda install --revision 0 && \
-#     conda env update --quiet --name ${ENV_NAME} --file /environment.yml && \
-#     conda clean --all --force-pkgs-dirs
+# Add conda installation dir to PATH (instead of doing 'conda activate')
+ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
 
-# # Add conda installation dir to PATH (instead of doing 'conda activate')
-# ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
+# Dump the details of the installed packages to a file for posterity
+RUN conda env export --name ${ENV_NAME} > ${ENV_NAME}_exported.yml
 
-# # Dump the details of the installed packages to a file for posterity
-# RUN conda env export --name ${ENV_NAME} > ${ENV_NAME}_exported.yml
-
-# # Initialise bash for conda
-# RUN conda init bash
+# Initialise bash for conda
+RUN conda init bash
