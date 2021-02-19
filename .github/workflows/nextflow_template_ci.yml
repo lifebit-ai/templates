@@ -1,13 +1,13 @@
-name: CI test
+name: CI test for Nextflow template
 # This workflow is triggered on pushes and PRs to the repository.
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        nxf_ver: ['20.01.0', '']
+        nxf_ver: ['20.01.0', '' ]
     steps:
       - uses: actions/checkout@v2
       - name: Install Nextflow
@@ -15,12 +15,6 @@ jobs:
           export NXF_VER=${{ matrix.nxf_ver }}
           wget -qO- get.nextflow.io | bash
           sudo mv nextflow /usr/local/bin/
-      - name: Echo ${{ github.workspace }}
-        run: |
-          echo ${{ github.workspace }}
-      - name: Echo ${GITHUB_WORKSPACE}
-        run: |
-          echo ${GITHUB_WORKSPACE}/inst/templates/nextflow
       - name: Basic workflow tests
         run: |
           nextflow run ${GITHUB_WORKSPACE}/inst/templates/nextflow -profile test,docker,local
