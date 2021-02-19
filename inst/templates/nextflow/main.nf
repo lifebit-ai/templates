@@ -64,8 +64,8 @@ process report {
     script:
     report_dir="${workflow.projectDir}/bin/report"
     """
-    cp -r ${report_dir}/ .
-    Rscript -e "rmarkdown::render('report.Rmd',params = list(res_table='$concat_table'))"
+    cp -r ${report_dir}/* .
+    Rscript -e "rmarkdown::render('report.Rmd',params = list(res_table='$table'))"
     mv report.html multiqc_report.html
     """
 }
