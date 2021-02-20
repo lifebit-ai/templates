@@ -6,6 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         nxf_ver: [ '20.10.0', '20.01.0']
     steps:
