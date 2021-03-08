@@ -22,7 +22,7 @@ create_dockerfile <- function(
   system_requirement = c("procps", "jq")
 ) {
   
-  if(missing(output)){
+  if(missing(output_path)){
     output_path = getwd()
   }
   
