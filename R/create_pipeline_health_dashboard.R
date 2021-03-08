@@ -1,6 +1,6 @@
-#' @title Render table
+#' @title Create pipeline health dashboard
 #'
-#' @description Render a pipeline health dashboard table
+#' @description Create pipeline health dashboard repo/folder
 #' 
 #' @param all_repo A specific structed json object
 #' @param output The repo/folder name
@@ -15,17 +15,12 @@ create_pipeline_health_dashboard <- function(
   }
   
   pkg_loc <- system.file(package = "templates")
+  input_template_dir <- paste0(pkg_loc, "/templates/pipeline_health_dashboard/")
+  output_repo_dir <- paste(output_path, output, sep = "/")
+  dir.create(output_repo_dir, showWarnings = F)
   
-  all_files_in_template <- list.files(paste0(pkg_loc, "/templates/pipeline_health_dashboard"), 
-                          full.names = TRUE, 
-                          all.files = TRUE)
-  
-  repo_dir <- paste(output_path, output, sep = "/")
-  dir.create(repo_dir, showWarnings = F)
-  
-  file.copy(from = all_files_in_template, 
-            to = repo_dir, 
+  file.copy(from = input_template_dir, 
+            to = output_repo_dir, 
             recursive = TRUE,
-            overwrite = TRUE, 
-            copy.mode = TRUE)
+          )
 }
