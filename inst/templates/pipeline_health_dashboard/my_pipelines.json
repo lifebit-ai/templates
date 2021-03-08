@@ -1,0 +1,17 @@
+{
+  "repo": [
+    { 
+      "repo_name": "GEL gwas",
+      "repo_url": "https://github.com/lifebit-ai/gel-gwas"
+    },
+    { 
+      "repo_name": "GEL gwasgsa",
+      "repo_url": "https://github.com/lifebit-ai/gwasgsa",
+      "cloudos_public_run": "https://cloudos.lifebit.ai/public/jobs/5fa2d74e61aba10112138790"
+    },
+    { 
+      "repo_name": "GEL avt",
+      "repo_url": "https://github.com/lifebit-ai/avt"
+    }
+  ]
+}
