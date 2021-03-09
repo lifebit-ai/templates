@@ -23,7 +23,10 @@ render_datatable <- function(all_repo){
     pipeline_df[n,10] <- get_cloudos_public_links(repo)
     pipeline_df[n,11] <- get_workflow_badges(repo$repo_url)
   }
-  names(pipeline_df) <- c("pipeline", "docs", "report.Rmd","open-issues", "open-pulls", "dev-branch", "default-branch", "last-updated" , "last-pushed", "cloudos-run", "status")
+  names(pipeline_df) <- c("pipeline", "docs", "report.Rmd","open-issues", 
+                          "open-pulls", "dev-branch", "default-branch", 
+                          "last-updated" , "last-pushed", "cloudos-run", 
+                          "status")
   
   sketch = htmltools::withTags(table(
     class = 'display',
