@@ -1,4 +1,4 @@
-FROM rocker/tidyverse:latest
+FROM rocker/r-ver:4.0.0-ubuntu18.04
 
 LABEL authors="sangram@lifebit.ai" \
       description="Docker image containing dependencies for lifebit-ai/pipeline-health"
