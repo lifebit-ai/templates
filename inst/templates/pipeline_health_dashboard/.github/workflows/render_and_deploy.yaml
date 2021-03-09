@@ -1,0 +1,35 @@
+name: render-and-deploy
+
+on:
+  schedule:
+    - cron: "0 0 * * FRI"
+  push:
+    branches: main
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    container: lifebitai/pipeline-health:latest
+    steps:
+      - uses: actions/checkout@v2.3.1
+        with:
+          persist-credentials: false
+
+      #- uses: r-lib/actions/setup-r@v1
+      #- uses: r-lib/actions/setup-pandoc@v1
+
+      - name: Render in the container
+        run: |
+          Rscript -e "rmarkdown::render('index.Rmd', output_dir = '.')"
+        env:
+          GITHUB_PAT: ${{ secrets.SKPAT }}
+      
+      - name: Install rsync 📚
+        run: |
+          apt-get update && apt-get install -y rsync
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: .

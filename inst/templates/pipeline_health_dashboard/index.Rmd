@@ -1,0 +1,48 @@
+---
+title: "Lifebit Pipeline Health"
+output: 
+  flexdashboard::flex_dashboard:
+  source_code: https://github.com/lifebit-ai/pipeline-health
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  echo=FALSE
+)
+```
+
+```{r README_render_meta_info, results='asis'}
+cat(paste0("Last updated: ", date()))
+```
+
+```{r load_library}
+library(gh)
+library(jsonlite)
+library(flexdashboard)
+library(templates) # lifebit's templates R-package
+```
+
+Tab-1
+=======================================================================
+
+```{r tab_1, get_all_repo, results='asis', eval=T}
+# read the json file
+my_piplines <- jsonlite::read_json("my-pipeline.json")
+# use the object to generate the dashboard table
+render_datatable(all_repo = my_piplines)
+```
+
+Tab-2
+=======================================================================
+
+```{r tab_2, datatable, results='asis', eval=T}
+render_datatable(all_repo = my_piplines)
+```
+
+About
+=======================================================================
+This static site, monitors all the Lifebit developed bioinformatic pipelines present in GitHub and provides useful information in a dashboard format. This auto updates everyday midnight.
+
+The pipelines mentioned here are fetched from json files in [this repo](https://github.com/lifebit-ai/pipeline-health/).
+
+Found a bug or have a feature request? Please create an issue here - https://github.com/lifebit-ai/pipeline-health/issues
