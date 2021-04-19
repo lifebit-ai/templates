@@ -34,3 +34,4 @@ jobs:
       - name: Basic workflow tests
         run: |
           nextflow run ${GITHUB_WORKSPACE}/inst/templates/nextflow -profile test,docker,local
+ 
