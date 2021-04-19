@@ -1,9 +1,22 @@
 name: CI test for Nextflow template
-# This workflow is triggered on pushes and PRs to the repository.
-on: [pull_request]
+# This workflow is triggered on pushes to master
+# and PRs to the repository only when a file within the inst/templates/nextflow changes
+on:
+  push:
+    branches:
+    - master
+    paths:
+    - 'inst/templates/nextflow/**'
+  pull_request_target:
+    types:
+      - opened
+      - closed
+      - edited
+    paths:
+    - 'inst/templates/nextflow/**'
 
 jobs:
-  test:
+  validate-nextflow-template:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
