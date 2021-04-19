@@ -8,7 +8,7 @@
 ## Git branching process
 
 * `master`/`main` branch is only reserved for stable versions, so it should be only used for release purpose.
-* Most bug fixes and features should be merge only to `dev`/`devel`.
+* Most bug fixes and features should be merged only onto `dev`. This will be implemented by opening PR reviews against this branch.
 
 ## Nextflow-specific process
 
