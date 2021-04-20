@@ -62,9 +62,8 @@ process report {
     file "multiqc_report.html" into ch_multiqc_report
 
     script:
-    report_dir="${workflow.projectDir}/bin/report"
     """
-    cp -r ${report_dir}/* .
+    cp -r ${params.report_dir}/* .
     Rscript -e "rmarkdown::render('report.Rmd',params = list(res_table='$table'))"
     mv report.html multiqc_report.html
     """
