@@ -12,7 +12,7 @@
 
 ## Nextflow-specific process
 
-Some specifications to make Nextflow pipelines structure standard across the organization.
+Some specifications to make Nextflow pipelines structure standard across the organisation.
  
 * Tool/software dependency of a pipeline are handled by combination of conda and docker (`env.yml` + `Dockerfile`)
 * Try to make the tool versions very specific in `env.yml` file. Ex - `samtools==1.12`
