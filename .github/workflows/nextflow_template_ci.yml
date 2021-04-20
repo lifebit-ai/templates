@@ -15,6 +15,7 @@ on:
       - closed
       - edited
     paths:
+    - 'inst/templates/nextflow/*'
     - 'inst/templates/nextflow/**'
 
 jobs:
