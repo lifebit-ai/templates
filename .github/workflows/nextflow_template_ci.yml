@@ -7,6 +7,7 @@ on:
     - master
     - main
     paths:
+    - 'inst/templates/nextflow/*'
     - 'inst/templates/nextflow/**'
   pull_request_target:
     types:
