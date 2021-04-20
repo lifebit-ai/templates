@@ -10,7 +10,6 @@ on:
     - 'inst/templates/nextflow/*'
     - 'inst/templates/nextflow/**'
   pull_request:
-```
     types:
       - opened
       - closed
