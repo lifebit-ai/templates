@@ -18,7 +18,7 @@ RUN conda env export --name ${ENV_NAME} > ${ENV_NAME}_exported.yml
 # Initialise bash for conda
 RUN conda init bash
 
-# Copy additonal scripts
+# Copy additional scripts
 ## bin/report/ files will be flatly copied into bin/ (no report folder)
 RUN mkdir /opt/bin/
 COPY bin/* /opt/bin/
