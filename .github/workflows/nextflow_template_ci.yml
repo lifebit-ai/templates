@@ -31,4 +31,5 @@ jobs:
           sudo mv nextflow /usr/local/bin/
       - name: Basic workflow tests
         run: |
-          nextflow run ${GITHUB_WORKSPACE}/inst/templates/nextflow -profile test,docker,local
+          cd ${GITHUB_WORKSPACE}/inst/templates/nextflow
+          nextflow run . -profile test,docker,local
