@@ -9,14 +9,18 @@ on:
     paths:
     - 'inst/templates/nextflow/*'
     - 'inst/templates/nextflow/**'
+    - '.github/workflows/nextflow_template_ci.yml'
   pull_request:
     types:
       - opened
       - closed
       - edited
+      - synchronize
+      - reopened
     paths:
     - 'inst/templates/nextflow/*'
     - 'inst/templates/nextflow/**'
+    - '.github/workflows/nextflow_template_ci.yml'
 
 jobs:
   validate-nextflow-template:
