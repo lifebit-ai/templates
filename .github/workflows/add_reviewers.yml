@@ -2,13 +2,13 @@
 name: add-reviewers
 
 on:
-  pull_request_target:
-    branches:
-      - master
-      - main
+  pull_request:
     types:
       - opened
+      - closed
       - edited
+      - synchronize
+      - reopened
     paths:
     - 'inst/templates/nextflow/*'
 
