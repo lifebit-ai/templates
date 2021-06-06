@@ -1,0 +1,25 @@
+name: PRs reviews reminder
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Run Manually'
+        required: false
+  schedule:
+    # Every weekday every 2 hours during working hours, send notification
+    - cron: "0 8-17/2 * * 1-5"
+
+jobs:
+  pr-reviews-reminder:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+    - uses: davideviolante/pr-reviews-reminder-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        webhook-url:  ${{ secrets.SLACK_WEBHOOK_URL }} # Required
+        provider: 'slack' # Required (slack or msteams)
+        channel: '#unreviewed-pr-spammer-bot' # Optional, eg: #general
+        github-provider-map: 'cgpu:UEK379FKQ' # Optional, eg: "DavideViolante:UEABCDEFG,foobar:UAABCDEFG"
