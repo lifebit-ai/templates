@@ -1,0 +1,22 @@
+# adds all bioinfo team as reviewers if the Nextflow template is updated before merging to master
+name: add-reviewers
+
+on:
+  pull_request:
+    paths:
+    - 'inst/templates/nextflow/*'
+
+jobs:
+  no-checkout-action:
+    strategy:
+      matrix:
+          reviewer: ["cgpu", "sk-sahu", "Vlad-Dembrovskyi", "mmeier93"]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Add Pull Request Reviewer
+      uses: AveryCameronUofR/add-reviewer-gh-action@1.0.4
+      with: 
+        reviewers: ${{ matrix.reviewer }}
+        token: ${{ secrets.GITHUB_TOKEN }}
