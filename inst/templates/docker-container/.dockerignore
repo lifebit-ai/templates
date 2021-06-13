@@ -1,0 +1,10 @@
+#Ignoring credentials
+.pem
+*-*.json
+
+#Ignoring git and cache folders
+.git
+.cache
+
+#Ignoring all the markdown files
+*.md
