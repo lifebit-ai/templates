@@ -1,0 +1,42 @@
+name: CI test for Nextflow template
+# This workflow is triggered on pushes to master
+# and PRs to the repository only when a file within the inst/templates/nextflow changes
+on:
+  push:
+    branches:
+    - master
+    - main
+    paths:
+    - 'inst/templates/nextflow/*'
+    - 'inst/templates/nextflow/**'
+    - '.github/workflows/nextflow_template_ci.yml'
+  pull_request:
+    types:
+      - opened
+      - closed
+      - edited
+      - synchronize
+      - reopened
+    paths:
+    - 'inst/templates/nextflow/*'
+    - 'inst/templates/nextflow/**'
+    - '.github/workflows/nextflow_template_ci.yml'
+
+jobs:
+  validate-nextflow-template:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        nxf_ver: [ '20.10.0', '20.01.0']
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Nextflow
+        run: |
+          export NXF_VER=${{ matrix.nxf_ver }}
+          wget -qO- get.nextflow.io | bash
+          sudo mv nextflow /usr/local/bin/
+      - name: Basic workflow tests
+        run: |
+          cd ${GITHUB_WORKSPACE}/inst/templates/nextflow
+          nextflow run . -profile test,docker,local
